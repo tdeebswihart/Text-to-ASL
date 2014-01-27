@@ -1,13 +1,14 @@
 //
 //  NSPasteboard+SaveRestore.h
-//  ASL Word to Sign
 //
-//  Created by Tim Swihart on 1/27/14.
-//  Copyright (c) 2014 Tim Swihart. All rights reserved.
+//  Created by Julián Romero on 4/24/13.
 //
 
 #import <Cocoa/Cocoa.h>
 
 @interface NSPasteboard (SaveRestore)
+
+- (void)save;
+- (void)restore;
 
 @end

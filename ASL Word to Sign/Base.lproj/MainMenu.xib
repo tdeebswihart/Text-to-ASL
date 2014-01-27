@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="3338"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -658,7 +659,7 @@
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OLs-X1-rWT">
                         <rect key="frame" x="20" y="318" width="346" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Hello" drawsBackground="YES" id="u2X-fi-L1I">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Type a word or phrase to translate" drawsBackground="YES" id="u2X-fi-L1I">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -678,12 +679,17 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-II-fEg">
                         <rect key="frame" x="18" y="293" width="444" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="iUw-a4-Q7D">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="" id="iUw-a4-Q7D">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRs-dk-UCC">
+                        <rect key="frame" x="20" y="20" width="440" height="265"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12"/>
+                    </webView>
                 </subviews>
             </view>
         </window>
@@ -691,6 +697,7 @@
             <connections>
                 <outlet property="textField" destination="OLs-X1-rWT" id="F7t-Ha-TgT"/>
                 <outlet property="textLabel" destination="NU5-II-fEg" id="Qgh-TB-eYp"/>
+                <outlet property="webView" destination="KRs-dk-UCC" id="7zb-cb-Eva"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
         </customObject>

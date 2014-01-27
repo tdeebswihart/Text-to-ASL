@@ -25,6 +25,13 @@
 		2E1A2C361896EEFB00F9E385 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A2C301896EEFB00F9E385 /* DDHotKeyCenter.m */; };
 		2E1A2C371896EEFB00F9E385 /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A2C321896EEFB00F9E385 /* DDHotKeyTextField.m */; };
 		2E1A2C381896EEFB00F9E385 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A2C341896EEFB00F9E385 /* DDHotKeyUtilities.m */; };
+		2EAFFCDB1897044A00692213 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAFFCDA1897044A00692213 /* WebKit.framework */; };
+		2EAFFCE018970F5E00692213 /* DJRKeyboardEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAFFCDF18970F5E00692213 /* DJRKeyboardEvents.m */; };
+		2EAFFCE218970F7600692213 /* DJRKeyboardTools.h in Sources */ = {isa = PBXBuildFile; fileRef = 2EAFFCE118970F7600692213 /* DJRKeyboardTools.h */; };
+		2EAFFCE418970FA300692213 /* DJRKeyboardTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAFFCE318970FA300692213 /* DJRKeyboardTools.m */; };
+		2EAFFCE718970FE400692213 /* DJRPasteboardProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAFFCE618970FE400692213 /* DJRPasteboardProxy.m */; };
+		2EAFFCEA1897114900692213 /* NSPasteboard+SaveRestore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAFFCE91897114900692213 /* NSPasteboard+SaveRestore.m */; };
+		7F6879CB37E24BEEA6242B78 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF698A67A9784F81876275D9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +75,17 @@
 		2E1A2C321896EEFB00F9E385 /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyTextField.m; path = "../../../../Desktop/DDHotKey-master/DDHotKeyTextField.m"; sourceTree = "<group>"; };
 		2E1A2C331896EEFB00F9E385 /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyUtilities.h; path = "../../../../Desktop/DDHotKey-master/DDHotKeyUtilities.h"; sourceTree = "<group>"; };
 		2E1A2C341896EEFB00F9E385 /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = "../../../../Desktop/DDHotKey-master/DDHotKeyUtilities.m"; sourceTree = "<group>"; };
+		2EAFFCDA1897044A00692213 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		2EAFFCDE18970F4E00692213 /* DJRKeyboardEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRKeyboardEvents.h; sourceTree = "<group>"; };
+		2EAFFCDF18970F5E00692213 /* DJRKeyboardEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRKeyboardEvents.m; sourceTree = "<group>"; };
+		2EAFFCE118970F7600692213 /* DJRKeyboardTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRKeyboardTools.h; sourceTree = "<group>"; };
+		2EAFFCE318970FA300692213 /* DJRKeyboardTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRKeyboardTools.m; sourceTree = "<group>"; };
+		2EAFFCE518970FE400692213 /* DJRPasteboardProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRPasteboardProxy.h; sourceTree = "<group>"; };
+		2EAFFCE618970FE400692213 /* DJRPasteboardProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRPasteboardProxy.m; sourceTree = "<group>"; };
+		2EAFFCE81897114900692213 /* NSPasteboard+SaveRestore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPasteboard+SaveRestore.h"; sourceTree = "<group>"; };
+		2EAFFCE91897114900692213 /* NSPasteboard+SaveRestore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPasteboard+SaveRestore.m"; sourceTree = "<group>"; };
+		5956710FCD7D48098207106E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		DF698A67A9784F81876275D9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +93,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EAFFCDB1897044A00692213 /* WebKit.framework in Frameworks */,
 				2E1A2C2B1896EEE700F9E385 /* Carbon.framework in Frameworks */,
 				2E1A2BE31896EBD700F9E385 /* Cocoa.framework in Frameworks */,
+				7F6879CB37E24BEEA6242B78 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +120,7 @@
 				2E1A2C091896EBD700F9E385 /* ASL Word to SignTests */,
 				2E1A2BE11896EBD700F9E385 /* Frameworks */,
 				2E1A2BE01896EBD700F9E385 /* Products */,
+				5956710FCD7D48098207106E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,10 +136,12 @@
 		2E1A2BE11896EBD700F9E385 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2EAFFCDA1897044A00692213 /* WebKit.framework */,
 				2E1A2C2A1896EEE700F9E385 /* Carbon.framework */,
 				2E1A2BE21896EBD700F9E385 /* Cocoa.framework */,
 				2E1A2C041896EBD700F9E385 /* XCTest.framework */,
 				2E1A2BE41896EBD700F9E385 /* Other Frameworks */,
+				DF698A67A9784F81876275D9 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,6 +219,17 @@
 		2E1A2C2C1896EEEC00F9E385 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				2EAFFCDD18970F3000692213 /* DJRKeyboardTools */,
+				2EAFFCDC18970F2900692213 /* DDHotKey */,
+				2EAFFCE81897114900692213 /* NSPasteboard+SaveRestore.h */,
+				2EAFFCE91897114900692213 /* NSPasteboard+SaveRestore.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		2EAFFCDC18970F2900692213 /* DDHotKey */ = {
+			isa = PBXGroup;
+			children = (
 				2E1A2C2D1896EEFB00F9E385 /* DDHotKeyAppDelegate.h */,
 				2E1A2C2E1896EEFB00F9E385 /* DDHotKeyAppDelegate.m */,
 				2E1A2C2F1896EEFB00F9E385 /* DDHotKeyCenter.h */,
@@ -205,7 +239,20 @@
 				2E1A2C331896EEFB00F9E385 /* DDHotKeyUtilities.h */,
 				2E1A2C341896EEFB00F9E385 /* DDHotKeyUtilities.m */,
 			);
-			name = Other;
+			name = DDHotKey;
+			sourceTree = "<group>";
+		};
+		2EAFFCDD18970F3000692213 /* DJRKeyboardTools */ = {
+			isa = PBXGroup;
+			children = (
+				2EAFFCE118970F7600692213 /* DJRKeyboardTools.h */,
+				2EAFFCE318970FA300692213 /* DJRKeyboardTools.m */,
+				2EAFFCE518970FE400692213 /* DJRPasteboardProxy.h */,
+				2EAFFCE618970FE400692213 /* DJRPasteboardProxy.m */,
+				2EAFFCDE18970F4E00692213 /* DJRKeyboardEvents.h */,
+				2EAFFCDF18970F5E00692213 /* DJRKeyboardEvents.m */,
+			);
+			name = DJRKeyboardTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +262,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E1A2C131896EBD700F9E385 /* Build configuration list for PBXNativeTarget "ASL Word to Sign" */;
 			buildPhases = (
+				F6DF5C4FDDFD46928B4AD1AB /* Check Pods Manifest.lock */,
 				2E1A2BDB1896EBD700F9E385 /* Sources */,
 				2E1A2BDC1896EBD700F9E385 /* Frameworks */,
 				2E1A2BDD1896EBD700F9E385 /* Resources */,
+				9113A866DB8D492BB4E9EDD6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,6 +352,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9113A866DB8D492BB4E9EDD6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6DF5C4FDDFD46928B4AD1AB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2E1A2BDB1896EBD700F9E385 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -310,9 +392,14 @@
 			files = (
 				2E1A2C361896EEFB00F9E385 /* DDHotKeyCenter.m in Sources */,
 				2E1A2C351896EEFB00F9E385 /* DDHotKeyAppDelegate.m in Sources */,
+				2EAFFCE718970FE400692213 /* DJRPasteboardProxy.m in Sources */,
+				2EAFFCE218970F7600692213 /* DJRKeyboardTools.h in Sources */,
 				2E1A2BEF1896EBD700F9E385 /* main.m in Sources */,
 				2E1A2C371896EEFB00F9E385 /* DDHotKeyTextField.m in Sources */,
+				2EAFFCE018970F5E00692213 /* DJRKeyboardEvents.m in Sources */,
 				2E1A2BF61896EBD700F9E385 /* WTSAppDelegate.m in Sources */,
+				2EAFFCE418970FA300692213 /* DJRKeyboardTools.m in Sources */,
+				2EAFFCEA1897114900692213 /* NSPasteboard+SaveRestore.m in Sources */,
 				2E1A2BFC1896EBD700F9E385 /* ASL_Word_to_Sign.xcdatamodeld in Sources */,
 				2E1A2C381896EEFB00F9E385 /* DDHotKeyUtilities.m in Sources */,
 			);
@@ -442,6 +529,7 @@
 		};
 		2E1A2C141896EBD700F9E385 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5956710FCD7D48098207106E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -455,6 +543,7 @@
 		};
 		2E1A2C151896EBD700F9E385 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5956710FCD7D48098207106E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -525,6 +614,7 @@
 				2E1A2C151896EBD700F9E385 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E1A2C161896EBD700F9E385 /* Build configuration list for PBXNativeTarget "ASL Word to SignTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +623,7 @@
 				2E1A2C181896EBD700F9E385 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

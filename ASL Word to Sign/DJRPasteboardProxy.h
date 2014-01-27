@@ -10,4 +10,6 @@
 
 @interface DJRPasteboardProxy : NSObject
 
+@property NSPasteboard *pasteboard;
+
 @end

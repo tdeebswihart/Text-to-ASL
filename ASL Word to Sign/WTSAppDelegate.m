@@ -8,11 +8,15 @@
 
 #import "WTSAppDelegate.h"
 
+#import "AFHTTPRequestOperationManager.h"
+
 @implementation WTSAppDelegate
 
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize pboard = _pboard;
+
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -20,11 +24,51 @@
     // TODO: set up window
 }
 
+#pragma mark - DDHotKey functions
+- (void) hotkeyWithEvent:(NSEvent *)hkEvent {
+//	[self addOutput:[NSString stringWithFormat:@"Firing -[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd)]];
+//	[self addOutput:[NSString stringWithFormat:@"Hotkey event: %@", hkEvent]];
+//self.textLabel.stringValue
+//TODO: fire cmd+c, read from pboard, update url
+}
+
 - (IBAction)translate:(id)sender
 {
     // grab textField's value here and update textlabel
     NSString *wordsToTranslate = [self.textField stringValue];
     [self.textLabel setStringValue: wordsToTranslate];
+
+    NSError *error;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"('(s|d)|\\.|,)" options:NSRegularExpressionCaseInsensitive error:&error];
+
+    NSString *keywords = [regex stringByReplacingMatchesInString:wordsToTranslate options:0 range:NSMakeRange(0, [wordsToTranslate length]) withTemplate:@""];
+
+//    NSLog(@"%@", keywords);
+    keywords = [keywords stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString *baseURL = @"http://smartsign.imtc.gatech.edu/videos?keywords=";
+
+    NSString *searchUrl = [NSString stringWithFormat:@"%@%@", baseURL, keywords];
+    [manager GET:searchUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        if ([responseObject count] != 0)
+        {
+//            NSLog(@"%@", responseObject);
+            NSString *videoUrl = [NSString stringWithFormat:@"%@%@",
+                                  @"http://www.youtube.com/embed/",
+                                  [responseObject valueForKey:@"id"][0]];
+            videoUrl = [videoUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+            [self.textLabel setStringValue: videoUrl];
+            [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoUrl]]];
+        } else {
+            [self.textLabel setStringValue: @"No ASL translation found :("];
+            [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
 }
 
 
