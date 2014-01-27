@@ -19,6 +19,12 @@
 		2E1A2C061896EBD700F9E385 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1A2BE21896EBD700F9E385 /* Cocoa.framework */; };
 		2E1A2C0E1896EBD700F9E385 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E1A2C0C1896EBD700F9E385 /* InfoPlist.strings */; };
 		2E1A2C101896EBD700F9E385 /* ASL_Word_to_SignTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A2C0F1896EBD700F9E385 /* ASL_Word_to_SignTests.m */; };
+		2E1A2C1A1896EC0400F9E385 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2E1A2C191896EC0400F9E385 /* Podfile */; };
+		2E1A2C2B1896EEE700F9E385 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1A2C2A1896EEE700F9E385 /* Carbon.framework */; };
+		2E1A2C351896EEFB00F9E385 /* DDHotKeyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A2C2E1896EEFB00F9E385 /* DDHotKeyAppDelegate.m */; };
+		2E1A2C361896EEFB00F9E385 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A2C301896EEFB00F9E385 /* DDHotKeyCenter.m */; };
+		2E1A2C371896EEFB00F9E385 /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A2C321896EEFB00F9E385 /* DDHotKeyTextField.m */; };
+		2E1A2C381896EEFB00F9E385 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A2C341896EEFB00F9E385 /* DDHotKeyUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +58,16 @@
 		2E1A2C0B1896EBD700F9E385 /* ASL Word to SignTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ASL Word to SignTests-Info.plist"; sourceTree = "<group>"; };
 		2E1A2C0D1896EBD700F9E385 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2E1A2C0F1896EBD700F9E385 /* ASL_Word_to_SignTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASL_Word_to_SignTests.m; sourceTree = "<group>"; };
+		2E1A2C191896EC0400F9E385 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		2E1A2C2A1896EEE700F9E385 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		2E1A2C2D1896EEFB00F9E385 /* DDHotKeyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyAppDelegate.h; path = "../../../../Desktop/DDHotKey-master/DDHotKeyAppDelegate.h"; sourceTree = "<group>"; };
+		2E1A2C2E1896EEFB00F9E385 /* DDHotKeyAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyAppDelegate.m; path = "../../../../Desktop/DDHotKey-master/DDHotKeyAppDelegate.m"; sourceTree = "<group>"; };
+		2E1A2C2F1896EEFB00F9E385 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyCenter.h; path = "../../../../Desktop/DDHotKey-master/DDHotKeyCenter.h"; sourceTree = "<group>"; };
+		2E1A2C301896EEFB00F9E385 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyCenter.m; path = "../../../../Desktop/DDHotKey-master/DDHotKeyCenter.m"; sourceTree = "<group>"; };
+		2E1A2C311896EEFB00F9E385 /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyTextField.h; path = "../../../../Desktop/DDHotKey-master/DDHotKeyTextField.h"; sourceTree = "<group>"; };
+		2E1A2C321896EEFB00F9E385 /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyTextField.m; path = "../../../../Desktop/DDHotKey-master/DDHotKeyTextField.m"; sourceTree = "<group>"; };
+		2E1A2C331896EEFB00F9E385 /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDHotKeyUtilities.h; path = "../../../../Desktop/DDHotKey-master/DDHotKeyUtilities.h"; sourceTree = "<group>"; };
+		2E1A2C341896EEFB00F9E385 /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDHotKeyUtilities.m; path = "../../../../Desktop/DDHotKey-master/DDHotKeyUtilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1A2C2B1896EEE700F9E385 /* Carbon.framework in Frameworks */,
 				2E1A2BE31896EBD700F9E385 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +95,7 @@
 		2E1A2BD61896EBD700F9E385 = {
 			isa = PBXGroup;
 			children = (
+				2E1A2C191896EC0400F9E385 /* Podfile */,
 				2E1A2BE81896EBD700F9E385 /* ASL Word to Sign */,
 				2E1A2C091896EBD700F9E385 /* ASL Word to SignTests */,
 				2E1A2BE11896EBD700F9E385 /* Frameworks */,
@@ -97,6 +115,7 @@
 		2E1A2BE11896EBD700F9E385 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E1A2C2A1896EEE700F9E385 /* Carbon.framework */,
 				2E1A2BE21896EBD700F9E385 /* Cocoa.framework */,
 				2E1A2C041896EBD700F9E385 /* XCTest.framework */,
 				2E1A2BE41896EBD700F9E385 /* Other Frameworks */,
@@ -117,6 +136,9 @@
 		2E1A2BE81896EBD700F9E385 /* ASL Word to Sign */ = {
 			isa = PBXGroup;
 			children = (
+				2E1A2C2C1896EEEC00F9E385 /* Other */,
+				2E1A2C1C1896EC2600F9E385 /* ViewModels */,
+				2E1A2C1B1896EC1C00F9E385 /* Views */,
 				2E1A2BF41896EBD700F9E385 /* WTSAppDelegate.h */,
 				2E1A2BF51896EBD700F9E385 /* WTSAppDelegate.m */,
 				2E1A2BF71896EBD700F9E385 /* MainMenu.xib */,
@@ -155,6 +177,35 @@
 				2E1A2C0C1896EBD700F9E385 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E1A2C1B1896EC1C00F9E385 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2E1A2C1C1896EC2600F9E385 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		2E1A2C2C1896EEEC00F9E385 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2E1A2C2D1896EEFB00F9E385 /* DDHotKeyAppDelegate.h */,
+				2E1A2C2E1896EEFB00F9E385 /* DDHotKeyAppDelegate.m */,
+				2E1A2C2F1896EEFB00F9E385 /* DDHotKeyCenter.h */,
+				2E1A2C301896EEFB00F9E385 /* DDHotKeyCenter.m */,
+				2E1A2C311896EEFB00F9E385 /* DDHotKeyTextField.h */,
+				2E1A2C321896EEFB00F9E385 /* DDHotKeyTextField.m */,
+				2E1A2C331896EEFB00F9E385 /* DDHotKeyUtilities.h */,
+				2E1A2C341896EEFB00F9E385 /* DDHotKeyUtilities.m */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1A2C1A1896EC0400F9E385 /* Podfile in Resources */,
 				2E1A2BED1896EBD700F9E385 /* InfoPlist.strings in Resources */,
 				2E1A2BFE1896EBD700F9E385 /* Images.xcassets in Resources */,
 				2E1A2BF31896EBD700F9E385 /* Credits.rtf in Resources */,
@@ -256,9 +308,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1A2C361896EEFB00F9E385 /* DDHotKeyCenter.m in Sources */,
+				2E1A2C351896EEFB00F9E385 /* DDHotKeyAppDelegate.m in Sources */,
 				2E1A2BEF1896EBD700F9E385 /* main.m in Sources */,
+				2E1A2C371896EEFB00F9E385 /* DDHotKeyTextField.m in Sources */,
 				2E1A2BF61896EBD700F9E385 /* WTSAppDelegate.m in Sources */,
 				2E1A2BFC1896EBD700F9E385 /* ASL_Word_to_Sign.xcdatamodeld in Sources */,
+				2E1A2C381896EEFB00F9E385 /* DDHotKeyUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

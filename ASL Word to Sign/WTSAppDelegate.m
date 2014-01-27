@@ -17,6 +17,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    // TODO: set up window
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.tswihart.ASL_Word_to_Sign" in the user's Application Support directory.
