@@ -20,6 +20,17 @@
     // TODO: set up window
 }
 
+- (IBAction)translate:(id)sender
+{
+    // grab textField's value here and update textlabel
+    NSString *wordsToTranslate = [self.textField stringValue];
+    [self.textLabel setStringValue: wordsToTranslate];
+}
+
+
+
+#pragma mark - Application Stuff
+
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.tswihart.ASL_Word_to_Sign" in the user's Application Support directory.
 - (NSURL *)applicationFilesDirectory
 {

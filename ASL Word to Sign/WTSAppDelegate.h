@@ -15,6 +15,11 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (weak) IBOutlet NSTextField *textField;
+@property (weak) IBOutlet NSTextField *textLabel;
+@property (weak) IBOutlet NSButton *translateButton;
+
+- (IBAction)translate:(id)sender;
 
 - (IBAction)saveAction:(id)sender;
 

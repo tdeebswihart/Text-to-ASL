@@ -671,6 +671,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="translate:" target="494" id="I3Q-ez-Txz"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-II-fEg">
                         <rect key="frame" x="18" y="293" width="444" height="17"/>
@@ -686,6 +689,8 @@
         </window>
         <customObject id="494" customClass="WTSAppDelegate">
             <connections>
+                <outlet property="textField" destination="OLs-X1-rWT" id="F7t-Ha-TgT"/>
+                <outlet property="textLabel" destination="NU5-II-fEg" id="Qgh-TB-eYp"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
         </customObject>
