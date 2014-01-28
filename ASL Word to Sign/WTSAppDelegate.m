@@ -8,9 +8,8 @@
 
 #import "WTSAppDelegate.h"
 #import "DJRPasteboardProxy.h"
-
-
 #import "AFHTTPRequestOperationManager.h"
+
 
 @implementation WTSAppDelegate
 
@@ -27,13 +26,32 @@
     // Insert code here to initialize your application
     // TODO: set up window
     self.httpManager = [AFHTTPRequestOperationManager manager];
+    self.hotKeyCenter = [DDHotKeyCenter sharedHotKeyCenter];
+
     NSError *error;
     self.cleanupRegex = [NSRegularExpression regularExpressionWithPattern:@"('(s|d)|\\.|,)" options:NSRegularExpressionCaseInsensitive error:&error];
     self.searchBaseURL = @"http://smartsign.imtc.gatech.edu/videos?keywords=";
     self.vidBaseURL = @"http://www.youtube.com/embed/";
+    [self registerGlobalHotkey];
 }
 
 #pragma mark - DDHotKey functions
+- (void) registerGlobalHotkey
+{
+    // Hotkey is CTRL-F1 currently
+	if (![self.hotKeyCenter registerHotKeyWithKeyCode:kVK_F1 modifierFlags:NSControlKeyMask target:self action:@selector(hotkeyWithEvent:) object:nil]) {
+        NSLog(@"Error registering hotkey");
+	} else {
+		NSLog(@"Successully registered hotkey");
+	}
+
+}
+
+-(void) deregisterGlobalHotkey
+{
+    [self.hotKeyCenter unregisterHotKeyWithKeyCode:kVK_F1 modifierFlags:NSControlKeyMask];
+}
+
 - (void) hotkeyWithEvent:(NSEvent *)hkEvent {
     NSLog(@"%@", hkEvent);
     NSString *selectedText = [DJRPasteboardProxy selectedText];
@@ -74,7 +92,6 @@
 - (IBAction)translate:(id)sender
 {
     // grab textField's value here and update textlabel
-//    NSString *wordsToTranslate = [self.textField stringValue];
     [self findSignForText:[self.textField stringValue]];
 
 }
@@ -201,7 +218,7 @@
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {
     // Save changes in the application's managed object context before the application terminates.
-    
+    [self deregisterGlobalHotkey];
     if (!_managedObjectContext) {
         return NSTerminateNow;
     }

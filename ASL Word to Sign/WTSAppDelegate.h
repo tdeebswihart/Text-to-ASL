@@ -8,8 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
+#import <Foundation/Foundation.h>
+#import <Carbon/Carbon.h>
 
 #import "AFHTTPRequestOperationManager.h"
+#import "DDHotKeyCenter.h"
 
 
 @interface WTSAppDelegate : NSObject <NSApplicationDelegate>
@@ -20,6 +23,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property AFHTTPRequestOperationManager *httpManager;
+@property DDHotKeyCenter* hotKeyCenter;
 @property NSRegularExpression *cleanupRegex;
 @property NSString *searchBaseURL;
 @property NSString *vidBaseURL;
@@ -31,7 +35,7 @@
 
 
 - (IBAction)translate:(id)sender;
-
+- (void)findSignForText:(NSString *)text;
 - (IBAction)saveAction:(id)sender;
 
 @end
