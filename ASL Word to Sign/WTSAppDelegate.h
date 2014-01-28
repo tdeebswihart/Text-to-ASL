@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 
-#import "DJRPasteboardProxy.h"
+#import "AFHTTPRequestOperationManager.h"
 
 
 @interface WTSAppDelegate : NSObject <NSApplicationDelegate>
@@ -19,8 +19,10 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-@property DJRPasteboardProxy *pboard;
+@property AFHTTPRequestOperationManager *httpManager;
+@property NSRegularExpression *cleanupRegex;
+@property NSString *searchBaseURL;
+@property NSString *vidBaseURL;
 
 @property (weak) IBOutlet NSTextField *textField;
 @property (weak) IBOutlet NSTextField *textLabel;

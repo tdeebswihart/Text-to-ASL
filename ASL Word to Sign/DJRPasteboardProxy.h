@@ -12,4 +12,7 @@
 
 @property NSPasteboard *pasteboard;
 
++ (DJRPasteboardProxy *) shared;
++ (NSString*) selectedText;
+
 @end

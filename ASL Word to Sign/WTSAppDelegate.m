@@ -7,6 +7,8 @@
 //
 
 #import "WTSAppDelegate.h"
+#import "DJRPasteboardProxy.h"
+
 
 #import "AFHTTPRequestOperationManager.h"
 
@@ -15,59 +17,65 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
-@synthesize pboard = _pboard;
+@synthesize httpManager = _httpManager;
+@synthesize cleanupRegex = _cleanupRegex;
+@synthesize searchBaseURL = _searchBaseURL;
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
     // TODO: set up window
+    self.httpManager = [AFHTTPRequestOperationManager manager];
+    NSError *error;
+    self.cleanupRegex = [NSRegularExpression regularExpressionWithPattern:@"('(s|d)|\\.|,)" options:NSRegularExpressionCaseInsensitive error:&error];
+    self.searchBaseURL = @"http://smartsign.imtc.gatech.edu/videos?keywords=";
+    self.vidBaseURL = @"http://www.youtube.com/embed/";
 }
 
 #pragma mark - DDHotKey functions
 - (void) hotkeyWithEvent:(NSEvent *)hkEvent {
-//	[self addOutput:[NSString stringWithFormat:@"Firing -[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd)]];
-//	[self addOutput:[NSString stringWithFormat:@"Hotkey event: %@", hkEvent]];
-//self.textLabel.stringValue
-//TODO: fire cmd+c, read from pboard, update url
+    NSLog(@"%@", hkEvent);
+    NSString *selectedText = [DJRPasteboardProxy selectedText];
+
+    [self findSignForText: selectedText];
 }
 
+- (void)findSignForText:(NSString *)text
+{
+    NSString *keywords = [self.cleanupRegex stringByReplacingMatchesInString:text options:0 range:NSMakeRange(0, [text length]) withTemplate:@""];
+
+    keywords = [keywords stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+
+    NSString *searchUrl = [NSString stringWithFormat:@"%@%@", self.searchBaseURL, keywords];
+    [self.httpManager GET:searchUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         if ([responseObject count] != 0)
+         {
+             NSString *videoUrl = [NSString stringWithFormat:@"%@%@",
+                                   self.vidBaseURL,
+                                   [responseObject valueForKey:@"id"][0]];
+             videoUrl = [videoUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+             [self.textLabel setStringValue: videoUrl];
+             [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoUrl]]];
+         } else {
+             [self.textLabel setStringValue: @"No ASL translation found :("];
+             [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+         }
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+}
+
+/**
+ * Translate the word typed into the text field
+ */
 - (IBAction)translate:(id)sender
 {
     // grab textField's value here and update textlabel
-    NSString *wordsToTranslate = [self.textField stringValue];
-    [self.textLabel setStringValue: wordsToTranslate];
-
-    NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"('(s|d)|\\.|,)" options:NSRegularExpressionCaseInsensitive error:&error];
-
-    NSString *keywords = [regex stringByReplacingMatchesInString:wordsToTranslate options:0 range:NSMakeRange(0, [wordsToTranslate length]) withTemplate:@""];
-
-//    NSLog(@"%@", keywords);
-    keywords = [keywords stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString *baseURL = @"http://smartsign.imtc.gatech.edu/videos?keywords=";
-
-    NSString *searchUrl = [NSString stringWithFormat:@"%@%@", baseURL, keywords];
-    [manager GET:searchUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        if ([responseObject count] != 0)
-        {
-//            NSLog(@"%@", responseObject);
-            NSString *videoUrl = [NSString stringWithFormat:@"%@%@",
-                                  @"http://www.youtube.com/embed/",
-                                  [responseObject valueForKey:@"id"][0]];
-            videoUrl = [videoUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-            [self.textLabel setStringValue: videoUrl];
-            [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoUrl]]];
-        } else {
-            [self.textLabel setStringValue: @"No ASL translation found :("];
-            [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-    }];
+//    NSString *wordsToTranslate = [self.textField stringValue];
+    [self findSignForText:[self.textField stringValue]];
 
 }
 
