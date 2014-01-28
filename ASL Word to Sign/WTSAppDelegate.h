@@ -35,7 +35,7 @@
 
 
 - (IBAction)translate:(id)sender;
-- (void)findSignForText:(NSString *)text;
+- (void)findSignForText:(NSString *)text andBringToFront:(BOOL)bringToFront;
 - (IBAction)saveAction:(id)sender;
 
 @end

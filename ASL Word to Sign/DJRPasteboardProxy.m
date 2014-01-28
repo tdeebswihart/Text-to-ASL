@@ -27,7 +27,7 @@
     NSString * selection = nil;
     BOOL insist = YES;
     NSUInteger attempts = 10;
-    NSAssert(self.pasteboard, @"Opps, lost the pasteboard.");
+    NSAssert(self.pasteboard, @"Oops, lost the pasteboard.");
     NSInteger previous = [self.pasteboard changeCount];
     [self.pasteboard save];
     [DJRKeyboardEvents sendCommandC];
@@ -40,7 +40,7 @@
             NSString * availableType = [self.pasteboard availableTypeFromArray:[NSArray arrayWithObjects:NSPasteboardTypeString, nil]];
             if (availableType) {
                 selection = [self.pasteboard stringForType:availableType];
-                NSLog(@"Selected text: %@", selection);
+//                NSLog(@"Selected text: %@", selection);
             }
         }
         insist = insist && attempts > 0;

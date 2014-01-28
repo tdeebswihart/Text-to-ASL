@@ -33,6 +33,8 @@
     self.searchBaseURL = @"http://smartsign.imtc.gatech.edu/videos?keywords=";
     self.vidBaseURL = @"http://www.youtube.com/embed/";
     [self registerGlobalHotkey];
+
+    [self.window setCollectionBehavior: NSWindowCollectionBehaviorMoveToActiveSpace];
 }
 
 #pragma mark - DDHotKey functions
@@ -42,7 +44,7 @@
 	if (![self.hotKeyCenter registerHotKeyWithKeyCode:kVK_F1 modifierFlags:NSControlKeyMask target:self action:@selector(hotkeyWithEvent:) object:nil]) {
         NSLog(@"Error registering hotkey");
 	} else {
-		NSLog(@"Successully registered hotkey");
+//		NSLog(@"Successully registered hotkey");
 	}
 
 }
@@ -53,19 +55,20 @@
 }
 
 - (void) hotkeyWithEvent:(NSEvent *)hkEvent {
-    NSLog(@"%@", hkEvent);
+//    NSLog(@"%@", hkEvent);
     NSString *selectedText = [DJRPasteboardProxy selectedText];
-
-    [self findSignForText: selectedText];
+    [self findSignForText: selectedText andBringToFront:YES];
+    self.textField.stringValue = selectedText;
 }
 
-- (void)findSignForText:(NSString *)text
+#pragma mark - custom methods for text-ASL
+- (void)findSignForText:(NSString *)text andBringToFront:(BOOL)bringToFront
 {
     NSString *keywords = [self.cleanupRegex stringByReplacingMatchesInString:text options:0 range:NSMakeRange(0, [text length]) withTemplate:@""];
 
-    keywords = [keywords stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    NSString *escapedKeywords = [keywords stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
 
-    NSString *searchUrl = [NSString stringWithFormat:@"%@%@", self.searchBaseURL, keywords];
+    NSString *searchUrl = [NSString stringWithFormat:@"%@%@", self.searchBaseURL, escapedKeywords];
     [self.httpManager GET:searchUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          if ([responseObject count] != 0)
@@ -76,15 +79,45 @@
              videoUrl = [videoUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
              [self.textLabel setStringValue: videoUrl];
              [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoUrl]]];
+              if (bringToFront)
+             {
+                 [NSApp activateIgnoringOtherApps:YES];
+             }
          } else {
              [self.textLabel setStringValue: @"No ASL translation found :("];
+             [self sendNotificationWithTitle:@"No ASL translation found" details:[NSString stringWithFormat:@"No video found for \"%@\"", keywords]];
              [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
          }
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+         [self sendNotificationWithTitle:@"ASL Translator Error" details:[NSString stringWithFormat:@"%@", error]];
      }];
 
 }
+
+#pragma mark - NSUSerNotification methods
+- (void)sendNotificationWithTitle:(NSString *)title details:(NSString *)details
+{
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    //    notification.responsePlaceholder = @"Reply";
+    //    notification.hasReplyButton = true;
+    notification.title = title;
+    notification.informativeText = details;
+    notification.soundName = NSUserNotificationDefaultSoundName;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+}
+
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+{
+//    if (notification.activationType == NSUserNotificationActivationTypeReplied){
+//        NSString* userResponse = notification.response.string;
+//    }
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+    return YES;
+}
+
 
 /**
  * Translate the word typed into the text field
@@ -92,7 +125,7 @@
 - (IBAction)translate:(id)sender
 {
     // grab textField's value here and update textlabel
-    [self findSignForText:[self.textField stringValue]];
+    [self findSignForText:[self.textField stringValue] andBringToFront:NO];
 
 }
 
