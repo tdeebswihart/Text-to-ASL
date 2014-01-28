@@ -1,7 +1,8 @@
 ## What is this?
 This is a proof-of-concept Mac application to translate from english text to the equivalent ASL signs;
-Currently the word or phrase needs to be written or pasted into the text field.
+
+## How do I use it?
+Text can be typed into the input, or text can be selected anywhere else and the current hotkey (CTRL-F1) pressed. The application will pull up the translation if available (te database is a little small right now) or send out a notification if one can't be found.
 
 ## Todo
 - implement global context menu option (right-click -> "Translate text to ASL")
-- implement global hotkey (select text in whichever application, press hotkey, the window with the video pops up and shows the sign)
